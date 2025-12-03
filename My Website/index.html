@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Melissa Chavez | Electrical Engineering Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-alt: #151b30;
+      --accent: #5ce1e6;
+      --text: #f5f5f5;
+      --muted: #9ca3af;
+      --card-radius: 18px;
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.9), rgba(2,6,23,0.4));
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+    }
+
+    .nav-name {
+      font-weight: 650;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-tagline {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 1.5rem auto 3rem auto;
+      padding: 0 1.2rem 3rem 1.2rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 2.5rem 1.5rem;
+      border-radius: 24px;
+      background: radial-gradient(circle at top left, rgba(94,234,212,0.09), transparent 55%), 
+                  linear-gradient(135deg, #020617, #020617, #020617, #020617);
+      border: 1px solid rgba(148,163,184,0.3);
+      box-shadow: 0 24px 60px rgba(15,23,42,0.85);
+      margin-bottom: 2rem;
+    }
+
+    .hero-left {
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-photo {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 20px;
+      border: 2px solid rgba(94,234,212,0.4);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      display: block;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 750;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(94,234,212,0.4);
+      background: rgba(15,23,42,0.9);
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.7rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.55rem 1rem;
+      font-size: 0.9rem;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, #22c1c3, #5ce1e6);
+      color: #020617;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(94,234,212,0.45);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.03);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-right {
+      border-radius: 20px;
+      padding: 1.2rem;
+      background: radial-gradient(circle at top, rgba(94,234,212,0.14), transparent 55%);
+      border: 1px solid rgba(148,163,184,0.35);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-right h3 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.7rem;
+    }
+
+    .hero-tag {
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      font-size: 0.7rem;
+    }
+
+    /* Sections */
+    section {
+      margin-top: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 650;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.3rem;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 1.7rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: var(--bg-alt);
+      border-radius: var(--card-radius);
+      padding: 1.2rem 1.3rem;
+      border: 1px solid rgba(148,163,184,0.35);
+      box-shadow: 0 16px 40px rgba(15,23,42,0.8);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Skills */
+    .skill-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-group-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+    }
+
+    .chip {
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: #020617;
+      border: 1px solid rgba(148,163,184,0.5);
+    }
+
+    /* Projects */
+    .project-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.4fr);
+      gap: 1.3rem;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.45rem;
+      font-size: 0.75rem;
+    }
+
+    .project-tags span {
+      padding: 0.16rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+    }
+
+    .project-links {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    /* Coursework & experience */
+    .course-list, .exp-list {
+      list-style: none;
+      font-size: 0.88rem;
+    }
+
+    .course-list li, .exp-list li {
+      margin-bottom: 0.35rem;
+    }
+
+    .course-name {
+      font-weight: 500;
+    }
+
+    .course-detail {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    /* Contact */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto 2rem auto;
+      padding: 0 1.2rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .hero,
+      .two-column,
+      .project-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding: 1.6rem 1.2rem;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
+
+      .hero-left {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <span class="nav-name">Melissa Chavez</span>
+        <span class="nav-tagline">Electrical Engineering</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#coursework">Coursework</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-left">
+        <img src="melissa.jpg" alt="Photo of Melissa Chavez" class="profile-photo">
+      </div>
+
+      <div>
+        <div class="hero-highlight">
+          <span>🔌 Hardware-focused EE student</span>
+        </div>
+        <h1 class="hero-title">Melissa Chavez</h1>
+        <p class="hero-subtitle">
+          I’m an electrical engineering student who loves bringing ideas to life through circuit design and prototyping! 
+        </p>
+        <p class="muted">
+          This portfolio showcases a selection of my course labs, hardware projects, and research work.
+        </p>
+        <div class="hero-buttons">
+          <!-- Make sure Chavez_Melissa_Resume.pdf is in the same folder as this HTML file -->
+          <a class="btn btn-primary" href="Chavez_Melissa_Resume.pdf" target="_blank" rel="noopener">View Resume (PDF)</a>
+          <a class="btn btn-outline" href="#projects">View Projects ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT & SKILLS -->
+    <section id="about">
+      <div class="two-column">
+        <div>
+          <!-- Focus Areas box moved here -->
+          <div class="card">
+            <h3>Focus Areas</h3>
+            <p class="muted">
+              I’m especially interested in:
+            </p>
+            <ul class="muted" style="margin-left: 1rem; margin-top: 0.4rem;">
+              <li>PCB design and bring-up</li>
+              <li>Power electronics & converters</li>
+              <li>Quantum and photonics</li>
+              <li>Signal integrity & electromagnetics</li>
+            </ul>
+            <div class="hero-tags" style="margin-top: 0.7rem;">
+              <span class="hero-tag">Onshape / Altium</span>
+              <span class="hero-tag">MATLAB</span>
+              <span class="hero-tag">C / C++</span>
+              <span class="hero-tag">Oscilloscopes</span>
+              <span class="hero-tag">HFSS</span>
+            </div>
+          </div>
+
+          <!-- About section underneath -->
+          <div style="margin-top: 1.6rem;">
+            <h2 class="section-title">About</h2>
+            <p class="muted">
+              I’m an electrical & computer engineering student at the University of Colorado Boulder.
+              A lot of my work centers on designing, building, and analog circuit design ranging from
+              prototyping power supplies, to designing custom microcontroller boards and building a functional AM Radio.
+            </p>
+            <p class="muted" style="margin-top: 0.6rem;">
+              I enjoy understanding not just <em>how</em> circuits work, but <em>why</em> they behave the way they do!
+            </p>
+          </div>
+        </div>
+
+        <div id="skills">
+          <h2 class="section-title">Skills</h2>
+          <div class="skill-groups">
+            <div class="card">
+              <div class="skill-group-title">Hardware</div>
+              <div class="skill-chips">
+                <span class="chip">PCB Design (Altium)</span>
+                <span class="chip">SMT & Through-hole Soldering</span>
+                <span class="chip">Bench Power Supplies & DMMs</span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="skill-group-title">Circuits & Systems</div>
+              <div class="skill-chips">
+                <span class="chip">Analog & Digital Electronics</span>
+                <span class="chip">Power Electronics</span>
+                <span class="chip">Signal Integrity</span>
+                <span class="chip">Control & Feedback</span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="skill-group-title">Software & Tools</div>
+              <div class="skill-chips">
+                <span class="chip">MATLAB </span>
+                <span class="chip">Python</span>
+                <span class="chip">C / Embedded C</span>
+                <span class="chip">Git & GitHub</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title" style="margin-top: 2.5rem;">Projects</h2>
+      <p class="section-subtitle">
+        A few selected hardware and course projects. Many started as class assignments and were extended
+        with my own improvements and experiments.
+      </p>
+
+      <div class="project-grid">
+        <!-- PROJECT 1 -->
+        <article class="card">
+          <div class="project-title">Portable CV/CC Power Supply</div>
+          <div class="project-meta">Team project · Synchronous buck-boost · Custom PCB</div>
+          <p class="muted">
+            Designed a portable dual-rail power supply with variable voltage, constant-current control.
+            Implemented a synchronous buck-boost stage, and feedback network.
+          </p>
+          <ul class="muted" style="margin-left: 1rem; margin-top: 0.5rem; font-size: 0.85rem;">
+            <li>Selected MOSFETs, drivers, and passives to meet voltage/current specs.</li>
+            <li>Debugged switching behavior, output ripple, and control-loop stability.</li>
+            <li>Developed a small scale breadboard implementation of the system.</li>
+            <li>Documented design decisions, test procedures, and lessons learned.</li>
+          </ul>
+          <div class="project-tags">
+            <span>Power Electronics</span>
+            <span>Simetrix Simulation</span>
+            <span>Feedback Control</span>
+          </div>
+          <div class="project-links">
+          </div>
+        </article>
+
+        <!-- PROJECT 2 -->
+        <article class="card">
+          <div class="project-title">Custom ATmega328 “Arduino-Compatible” Board</div>
+          <div class="project-meta">Solo project · USB-UART · 2-layer PCB</div>
+          <p class="muted">
+            Created a custom Arduino board, this included power regulation, USB-to-UART interface, and ATmega328 bootloading.
+            Focused on layout for decoupling, clock routing, and robust USB connectivity.
+          </p>
+          <ul class="muted" style="margin-left: 1rem; margin-top: 0.5rem; font-size: 0.85rem;">
+            <li>Implemented PD system for 9&nbsp;V, 5&nbsp;V and 3.3&nbsp;V rails with proper decoupling.</li>
+            <li>Verified bootloader programming and serial communication over USB.</li>
+            <li>Used the board to run small embedded examples and lab experiments.</li>
+          </ul>
+          <div class="project-tags">
+            <span>CAD Altium</span>
+            <span>PCB debugging and testing.</span>
+            <span>USB-UART</span>
+          </div>
+          <div class="project-links">
+            <!-- Make sure Custom_Arduino_Report.pdf is in the same folder, or change the filename here -->
+            <a href="PCB_Board_3_Report__Board_Debugging_Included_ (1).pdf" target="_blank" rel="noopener">📄 Project Report (PDF)</a>
+            <a href="ArduinoPCB.jpg" target="_blank">📷 Board Photos</a>
+            <a href="arduinoSchematic.png" target="_blank"> 📄 Schematics</a>
+          </div>
+        </article>
+<!-- PROJECT 3 -->
+<article class="card">
+  <div class="project-title">STM32 Tetris Game</div>
+  <div class="project-meta">Embedded Systems · C Programming · Driver Configuration</div>
+
+  <p class="muted">
+    Designed and implemented a Tetris game on an STM32 microcontroller. 
+    This project involved configuring low-level drivers, peripherals, and display interfaces 
+    to create a visually appealing, and responsive gameplay experience.
+  </p>
+
+  <ul class="muted" style="margin-left: 1rem; margin-top: 0.5rem; font-size: 0.85rem;">
+    <li>Configured GPIO, timers, and display drivers for real-time game rendering.</li>
+    <li>Implemented Tetris logic in C, including rotation, collision detection, and scoring.</li>
+    <li>Optimized animations and input handling for responsive gameplay.</li>
+    <li>Designed a clean and aesthetic graphical interface suitable for embedded hardware.</li>
+  </ul>
+
+  <div class="project-tags">
+    <span>STM32</span>
+    <span>Embedded C</span>
+    <span>Drivers & Peripherals</span>
+    <span>Game Design</span>
+  </div>
+</article>
+
+
+        <!-- PROJECT 4 -->
+        <article class="card">
+          <div class="project-title">High Frequency Signal Simulation Undergraduate Research</div>
+          <div class="project-meta">MATLAB · Electromagnetic Computation · FDTF</div>
+          <p class="muted">
+            Working for University of Colorado Boulder's High Frequency Signal Simulation lab, I perform MATLAB simulations using Finite Difference Time Domain (FDTD) method. FDTD uses a discrete form of Maxwell's equations to simulate electromagnetic behavior.
+            My role is to conduct experiments that help expose and quantify the limitations of this idustry used computational method          </p>
+          <ul class="muted" style="margin-left: 1rem; margin-top: 0.5rem; font-size: 0.85rem;">
+            <li>Simulated high frequency surface waves above planar circuits.</li>
+            <li>Contributing to ongoing research with regards to absorbing boundary conditions (ABC's) in FDTD.</li>
+            <li>Documented project extensively, including version control, and data management.</li>
+          </ul>
+          <div class="project-tags">
+            <span>MATLAB</span>
+            <span>FDTD</span>
+            <span>EM Computation</span>
+            <span>HFSS</span>
+          </div>
+          <div class="project-links">
+            <a href="Chavez__Melissa_DLA_Report_FA_25 (1).pdf" target="_blank" rel="noopener">
+            📄 Simulation Research Report (PDF)
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- COURSEWORK & EXPERIENCE -->
+    <section id="coursework">
+      <div class="two-column">
+        <div>
+          <h2 class="section-title" style="margin-top: 2.5rem;">Relevant Coursework</h2>
+          <ul class="course-list">
+            <li>
+              <span class="course-name">Printed Circuit Board Design </span><br />
+              <span class="course-detail">Board-level design, layout, and bring-up of custom PCBs.</span>
+            </li>
+            <li>
+              <span class="course-name">Power Electronics</span><br />
+              <span class="course-detail">Buck/boost converters, switching behavior, feedback, effeciency, and converter design.</span>
+            </li>
+            <li>
+              <span class="course-name">Embedded Systems</span><br />
+              <span class="course-detail">Microcontroller programming, peripheral interfacing, and low-level C.</span>
+            </li>
+            <li>
+              <span class="course-name">Electromagnetic Fields and Waves</span><br />
+              <span class="course-detail">Time/frequency-domain analysis, waves on transmission lines, field behavior, and Maxwell's equations.</span>
+            </li>
+            <li>
+              <span class="course-name">Digital Logic </span><br />
+              <span class="course-detail">Combinational and sequential logic, state machines, and bit logic/arithmetic.</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="section-title" style="margin-top: 2.5rem;">Experience & Involvement</h2>
+          <ul class="exp-list">
+            <li>
+              <strong>Public Speaking</strong><br />
+              <span class="course-detail">
+                FRCC 2023-2024 commencement ceremony student speaker.
+              </span>
+            </li>
+            <li>
+              <span class="course-detail">
+                Completed a video segment for The Denver Foundation and spoke at their first celebratory event Dec 5, 2025. This speech focused on the importance of non-profit organizations in supporting colorado youth with financial need, access higher education.
+            </span>
+            </li>
+            <li>
+              <span class="course-detail">
+                Gave a speech at COCEAL Conference November 2024, advocating for access to higher education in the LatinX community.
+            </span>
+            </li>
+                        <li>
+              <span class="course-detail">
+                Participated in a CBS news segment highlighting the importance of free college application days in Colorado.
+            </span>
+            </li>
+            <li>
+              <strong>Clubs & community </strong><br />
+              <span class="course-detail">
+                Active member of SWE, IEEE, Quantum Scholars, and National Society of Collegiate Scholars.
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title" style="margin-top: 2.5rem;">Contact</h2>
+      <p class="section-subtitle">
+        Feel free to reach out about internships, research opportunities, or collaborations.
+      </p>
+      <div class="card">
+        <div class="contact-row">
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <a href="mailto:youremail@example.com">mchavez1628@outlook.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">LinkedIn</span>
+            <a href="#" target="_blank" rel="noopener">www.linkedin.com/in/melissa-chavez-249b0a302</a>
+          </div>
+          <!--<div class="contact-item">
+            <span class="contact-label">GitHub</span>
+            <a href="#" target="_blank" rel="noopener">github.com/your-username</a>
+          </div> -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Melissa Chavez · Built with HTML & CSS
+  </footer>
+
+  <script>
+    // Set the current year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
